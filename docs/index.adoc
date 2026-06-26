@@ -1,5 +1,8 @@
+image::images/img.jpg[width=100%]
+
 = CV
 
+View CVs below
 
 ====
 
@@ -11,3 +14,5 @@ ifdef::env-name[:relfilesuffix: .adoc]
 * xref:ukranian-cv.html[Ukranian CV, window="_blank"]
 
 ====
+
+image::images/img.jpg[width=100%]
