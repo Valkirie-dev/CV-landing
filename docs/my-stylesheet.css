@@ -1,0 +1,338 @@
+/* ==========================================================================
+   Modern Minimal Corporate Theme (Asciidoctor-ready)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    /* Core brand */
+    --primary: #00a6eb;
+    --accent: #e60036;
+
+    /* Neutrals (modern gray scale) */
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+
+    /* Typography */
+    --font: "Manrope", system-ui, -apple-system, Segoe UI, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+
+    /* Effects */
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    --shadow-hover: 0 18px 50px rgba(0,166,235,0.12);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 40px 18px;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Selection */
+::selection {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Layout container */
+#content {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 42px 48px;
+}
+
+/* subtle top accent */
+#content::before {
+    content: "";
+    display: block;
+    height: 4px;
+    margin: -42px -48px 32px -48px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4 {
+    color: var(--text);
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 2.6rem;
+    color: var(--primary);
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 2.2em;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+h3 {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h3::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* Paragraph */
+p {
+    margin: 0 0 1.2em 0;
+    font-size: 1.02rem;
+    color: var(--text);
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .25s ease;
+}
+
+a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* muted emphasis */
+em {
+    font-style: italic;
+    color: #b4234c;
+    background: linear-gradient(180deg, transparent 70%, rgba(230,0,54,0.12) 70%);
+}
+
+/* strong */
+strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Lists (clean modern)
+   ========================================================================== */
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+ul li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* ordered list */
+ol {
+    padding-left: 20px;
+}
+
+ol li {
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Code
+   ========================================================================== */
+
+code {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--primary);
+}
+
+/* block code */
+.listingblock {
+    margin: 2em 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #0f172a;
+}
+
+.listingblock pre {
+    margin: 0;
+    padding: 18px 20px;
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    color: #e5e7eb;
+    overflow-x: auto;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+table.tableblock {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+table.tableblock thead th {
+    background: var(--surface-2);
+    text-align: left;
+    font-weight: 700;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+table.tableblock td {
+    padding: 10px 12px;
+    border-top: 1px solid var(--border);
+}
+
+table.tableblock tr:hover td {
+    background: #f8fafc;
+}
+
+/* ==========================================================================
+   Details / Accordion
+   ========================================================================== */
+
+details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 1.5em 0;
+    background: var(--surface);
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 650;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] {
+    box-shadow: var(--shadow);
+}
+
+/* ==========================================================================
+   Admonitions
+   ========================================================================== */
+
+.admonitionblock {
+    border-left: 4px solid var(--border);
+    padding: 14px 16px;
+    margin: 1.5em 0;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+}
+
+.admonitionblock.note { border-color: var(--primary); }
+.admonitionblock.tip { border-color: #22c55e; }
+.admonitionblock.important { border-color: var(--accent); }
+
+/* ==========================================================================
+   Images
+   ========================================================================== */
+
+.imageblock {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.imageblock img {
+    max-width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ==========================================================================
+   TOC
+   ========================================================================== */
+
+#toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 2em;
+    position: sticky;
+    top: 16px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    #content {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

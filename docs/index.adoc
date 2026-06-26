@@ -1,0 +1,13 @@
+= CV
+
+
+====
+
+:linkattrs:
+
+ifdef::env-name[:relfilesuffix: .adoc]
+
+* xref:englsih-cv.html[English CV, window="_blank"]
+* xref:ukranian-cv.html[Ukranian CV, window="_blank"]
+
+====

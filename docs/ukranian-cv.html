@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeriia Kosharna | Educational Project Manager</title>
+    
+    <!-- Fonts: Inter (Single Font Policy) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar for table */
+        .table-scroll::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .table-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .table-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .table-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .dark .table-scroll::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        .dark .table-scroll::-webkit-scrollbar-thumb {
+            background: #475569; 
+        }
+        .dark .table-scroll::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Active sort button styling */
+        .sort-btn.active {
+            background-color: #3b82f6 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-primary-600 dark:text-primary-500">
+                    VK.
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 font-medium transition-colors">Про мене</a>
+                    <a href="#experience" class="text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 font-medium transition-colors">Досвід</a>
+                    <a href="#skills" class="text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 font-medium transition-colors">Навички</a>
+                    <a href="#education" class="text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 font-medium transition-colors">Освіта & Нагороди</a>
+                    <a href="#publications" class="text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 font-medium transition-colors">Публікації</a>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon dark:hidden text-slate-600"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 fade-in">
+        <div class="flex-1 space-y-6">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 font-semibold text-sm mb-2 border border-primary-200 dark:border-primary-800/50">
+                <i class="fas fa-rocket mr-1"></i> Educational Project Manager
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                Valeriia Kosharna
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                Менеджер освітніх продуктів з досвідом розбудови освітніх інфраструктур, управління системами LMS (Moodle) та керівництва крос-функціональними командами. Колишній експерт НАЗЯВО з досвідом аналізу програм та акредитації.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 pt-4">
+                <a href="mailto:valeri0104@gmail.com" class="flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition shadow-md font-medium">
+                    <i class="fas fa-envelope"></i> valeri0104@gmail.com
+                </a>
+                <a href="tel:+380509708668" class="flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm font-medium">
+                    <i class="fas fa-phone"></i> +38 050 970 86 68
+                </a>
+            </div>
+            
+            <div class="flex gap-6 pt-2 text-slate-500 dark:text-slate-400 text-sm font-medium">
+                <span class="flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-red-500"></i> Kharkiv, Ukraine</span>
+                <span class="flex items-center gap-1.5"><i class="fab fa-telegram text-blue-500"></i> @ValkiriiaV</span>
+            </div>
+        </div>
+        
+        <div class="relative w-64 h-64 md:w-80 md:h-80 shrink-0">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-500 to-indigo-400 rounded-3xl shadow-2xl rotate-3 scale-105 opacity-20 dark:opacity-40 blur-lg transition-transform hover:rotate-6"></div>
+            <div class="absolute inset-0 bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden border-4 border-white dark:border-slate-800">
+                <!-- Using initials as a modern avatar placeholder. You can replace the src with an actual image -->
+                <div class="text-7xl font-bold text-primary-300 dark:text-slate-600 select-none">VK</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white dark:bg-slate-800/50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-3 text-slate-900 dark:text-white">
+                <i class="fas fa-briefcase text-primary-500"></i> Досвід Роботи
+            </h2>
+            
+            <div class="relative border-l-4 border-primary-100 dark:border-slate-700 ml-4 md:ml-12 space-y-12">
+                
+                <!-- Job 1 -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-6 h-6 bg-primary-500 rounded-full -left-[15px] top-1 border-4 border-white dark:border-slate-800 shadow"></div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Educational Project Manager</h3>
+                            <span class="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-sm font-semibold rounded-full mt-2 md:mt-0">01/2022 - Present</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium mb-4">NDA</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                            <li>Проєктування та впровадження наскрізних освітніх інфраструктур, від стратегічного планування до технічної реалізації.</li>
+                            <li>Управління та оптимізація LMS Moodle, включаючи розробку систем комунікації зі студентами.</li>
+                            <li>Координація викладацького складу для забезпечення високої якості курсів.</li>
+                            <li>Співпраця з технічними відділами для інтеграції освітніх технологій.</li>
+                            <li>Аналіз потреб, дослідження ринку та відгуків користувачів для покращення продукту.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-6 h-6 bg-slate-300 dark:bg-slate-600 rounded-full -left-[15px] top-1 border-4 border-white dark:border-slate-800"></div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Expert</h3>
+                            <span class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold rounded-full mt-2 md:mt-0">03/2021 - 12/2023</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium mb-4">National Agency for Higher Education Quality Assurance (НАЗЯВО)</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                            <li>Участь у 7 процедурах акредитації освітніх програм національного рівня.</li>
+                            <li>Оцінка освітніх програм на відповідність національним та європейським стандартам якості.</li>
+                            <li>Розробка рекомендацій щодо покращення якості вищої освіти.</li>
+                            <li>Оцінка навчальних планів, методологій викладання, ресурсів та підтримки студентів.</li>
+                            <li>Участь у перегляді політик та консультаціях щодо вдосконалення процесів забезпечення якості.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-6 h-6 bg-slate-300 dark:bg-slate-600 rounded-full -left-[15px] top-1 border-4 border-white dark:border-slate-800"></div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Marketing and Corporate Communications Specialist</h3>
+                            <span class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold rounded-full mt-2 md:mt-0">05/2019 - 08/2021</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium mb-4">Simon Kuznets Kharkiv National University of Economics</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                            <li>Розробка та реалізація маркетингових стратегій для просування академічних програм, досліджень та подій.</li>
+                            <li>Організація освітніх, наукових та розважальних заходів для студентів та співробітників.</li>
+                            <li>Керівництво PR-активностями та підтримка внутрішнього брендингу і комунікацій.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-6 h-6 bg-indigo-500 rounded-full -left-[15px] top-1 border-4 border-white dark:border-slate-800 shadow"></div>
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-6 md:p-8 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/30 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fas fa-crown text-indigo-500"></i> Head of Student Self-Government Body
+                            </h3>
+                            <span class="inline-block px-3 py-1 bg-indigo-200 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 text-sm font-semibold rounded-full mt-2 md:mt-0">2017 - 2021</span>
+                        </div>
+                        <p class="text-indigo-700 dark:text-indigo-400 font-medium mb-4">Simon Kuznets Kharkiv National University of Economics</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                            <li>Керівництво студентським самоврядуванням, представлення інтересів понад 1000 студентів.</li>
+                            <li>Ініціювання та управління академічними, соціальними та культурними проєктами.</li>
+                            <li>Співпраця з адміністрацією університету щодо вдосконалення освітньої політики.</li>
+                            <li>Організація програм розвитку лідерства, конференцій та івентів.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Languages Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Hard & Soft Skills -->
+                <div class="md:col-span-2 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors duration-300">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+                        <i class="fas fa-laptop-code text-primary-500"></i> Професійні Навички
+                    </h2>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Educational Product Management</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Project Management</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Curriculum Development</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Marketing Strategy & Comms</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Higher Education Quality Assurance</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Stakeholder Engagement</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Public Speaking & Presentation</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Team Leadership</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Event Organization</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Problem Solving</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Cross-functional Collaboration</span>
+                        <span class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium border border-transparent dark:border-slate-600">Strategic Planning</span>
+                    </div>
+                    
+                    <h3 class="text-lg font-bold mt-8 mb-4 text-slate-800 dark:text-slate-200">Tech & Methodologies</h3>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 border border-primary-200 bg-primary-50 dark:border-primary-900/50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-lg text-sm font-medium">SDLC</span>
+                        <span class="px-3.5 py-1.5 border border-primary-200 bg-primary-50 dark:border-primary-900/50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-lg text-sm font-medium">Scrum / Agile / Sprint Planning</span>
+                        <span class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium"><i class="fab fa-java text-orange-500 mr-1"></i> Java (Basics: loops, conditionals)</span>
+                        <span class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium"><i class="fab fa-python text-blue-500 mr-1"></i> Python (Basics: loops, conditionals)</span>
+                        <span class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium"><i class="fab fa-git-alt text-red-500 mr-1"></i> Git Version Control</span>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors duration-300 flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-900 dark:text-white">
+                        <i class="fas fa-globe-americas text-primary-500"></i> Мови
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1.5 text-sm font-semibold">
+                                <span class="text-slate-700 dark:text-slate-200">Англійська</span>
+                                <span class="text-primary-600 dark:text-primary-400">B2+</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-primary-500 h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5 text-sm font-semibold">
+                                <span class="text-slate-700 dark:text-slate-200">Українська</span>
+                                <span class="text-primary-600 dark:text-primary-400">Native</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-primary-500 h-2.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5 text-sm font-semibold">
+                                <span class="text-slate-700 dark:text-slate-200">Російська</span>
+                                <span class="text-primary-600 dark:text-primary-400">Native</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-slate-400 h-2.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Awards Section -->
+    <section id="education" class="py-20 bg-slate-100/50 dark:bg-slate-800/30 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Education -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 text-slate-900 dark:text-white">
+                        <i class="fas fa-graduation-cap text-primary-500"></i> Освіта
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Master of Educational and Pedagogical Sciences <span class="text-primary-500 text-sm align-middle bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-md border border-primary-100 dark:border-primary-800">(with honors)</span></h3>
+                            <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Simon Kuznets Kharkiv National University of Economics</p>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <span class="text-slate-500 text-sm font-medium"><i class="far fa-calendar-alt mr-1"></i> 2021 - 2022</span>
+                                <span class="text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 px-2.5 py-1 rounded text-xs font-bold tracking-wide">GPA: 93.78/100</span>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Bachelor of Management <span class="text-primary-500 text-sm align-middle bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-md border border-primary-100 dark:border-primary-800">(with honors)</span></h3>
+                            <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Simon Kuznets Kharkiv National University of Economics</p>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <span class="text-slate-500 text-sm font-medium"><i class="far fa-calendar-alt mr-1"></i> 2017 - 2021</span>
+                                <span class="text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 px-2.5 py-1 rounded text-xs font-bold tracking-wide">GPA: 92.10/100</span>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Secondary Education <span class="text-primary-500 text-sm align-middle bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-md border border-primary-100 dark:border-primary-800">(with honors)</span></h3>
+                            <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Kharkiv Gymnasium №55</p>
+                            <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <span class="text-slate-500 text-sm font-medium"><i class="far fa-calendar-alt mr-1"></i> 2006 - 2017</span>
+                                <span class="text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 px-2.5 py-1 rounded text-xs font-bold tracking-wide">GPA: 11.30/12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards & Certs -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 text-slate-900 dark:text-white">
+                        <i class="fas fa-trophy text-yellow-500"></i> Нагороди та Сертифікати
+                    </h2>
+                    
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mb-6 transition-colors">
+                        <h3 class="text-lg font-bold mb-4 border-b border-slate-100 dark:border-slate-700 pb-3 text-slate-900 dark:text-white">Сертифікації</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Claude 101 (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Intro to subagents (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Intro to agent skills (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> AI Fluency: Framework (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Claude Code in Action (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Claude Code 101 (Anthropic)</div>
+                            <div class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium"><i class="fas fa-certificate text-primary-500 mt-0.5"></i> Project Management (NDA, 2024)</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                        <h3 class="text-lg font-bold mb-4 border-b border-slate-100 dark:border-slate-700 pb-3 text-slate-900 dark:text-white">Досягнення</h3>
+                        <ul class="space-y-3.5">
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span>Автор та співавтор 25+ наукових публікацій у рецензованих виданнях.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span>Research project: "Student Activity as Stakeholders in Ensuring the Quality of Higher Education" (2022).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span><strong>"Young Person of the Year" Award</strong> — за видатний внесок у громадську та наукову діяльність (Харків, 2019).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span>Research project: "Human Capital" (2019).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span><strong>3rd Place Winner</strong>, "Kharkiv - City of Youth Initiatives" Competition (2018).</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                <i class="fas fa-star text-yellow-400 mt-1 shrink-0"></i>
+                                <span>Історичні дослідження МАН: "Харків: Річка і місто..." (2017) та "Рання базиліка 1935 року" (2016).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3 text-slate-900 dark:text-white">
+                <i class="fas fa-book-open text-primary-500"></i> Список наукових праць
+            </h2>
+            <p class="text-center text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+                Всі роботи зведені до єдиного формату написання. Використовуйте кнопки для сортування за алфавітом чи роком.
+            </p>
+
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors">
+                
+                <!-- Controls -->
+                <div class="p-4 sm:p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-4 transition-colors">
+                    <div class="text-sm font-medium text-slate-600 dark:text-slate-300">
+                        Всього публікацій: <span id="pub-count" class="text-slate-900 dark:text-white font-bold bg-white dark:bg-slate-700 px-2 py-0.5 rounded shadow-sm">26</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-sm">
+                        <span class="text-slate-500 dark:text-slate-400 font-medium mr-1 hidden sm:inline-block">Сортувати:</span>
+                        <button onclick="sortData('yearDesc')" id="btn-yearDesc" class="sort-btn active px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium transition hover:bg-slate-300 dark:hover:bg-slate-600">Нові (Рік ↓)</button>
+                        <button onclick="sortData('yearAsc')" id="btn-yearAsc" class="sort-btn px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium transition hover:bg-slate-300 dark:hover:bg-slate-600">Старі (Рік ↑)</button>
+                        <button onclick="sortData('alphaAsc')" id="btn-alphaAsc" class="sort-btn px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium transition hover:bg-slate-300 dark:hover:bg-slate-600">А-Я</button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto table-scroll w-full">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-100/50 dark:bg-slate-900/50 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-700">
+                                <th class="p-4 font-semibold w-12 text-center">№</th>
+                                <th class="p-4 font-semibold min-w-[300px]">Назва роботи</th>
+                                <th class="p-4 font-semibold w-28 text-center">Тип</th>
+                                <th class="p-4 font-semibold w-24 text-center">Рік</th>
+                                <th class="p-4 font-semibold min-w-[150px]">Співавтори</th>
+                                <th class="p-4 font-semibold min-w-[250px]">Джерело (Видання)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body" class="divide-y divide-slate-100 dark:divide-slate-700/50">
+                            <!-- Rows will be injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm border-t border-slate-800">
+        <div class="flex justify-center gap-4 mb-4">
+            <a href="mailto:valeri0104@gmail.com" class="text-slate-400 hover:text-white transition"><i class="fas fa-envelope text-xl"></i></a>
+            <a href="https://t.me/ValkiriiaV" target="_blank" class="text-slate-400 hover:text-blue-400 transition"><i class="fab fa-telegram text-xl"></i></a>
+        </div>
+        <p>© 2026 Valeriia Kosharna. Всі права захищено.</p>
+        <p class="mt-2 text-slate-500">Створено за допомогою сучасних веб-технологій.</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Initial Theme Check based on system or local storage
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Scientific Papers Data (Classified automatically from provided DOCX based on source context)
+        const rawPapers = [
+            { id: 1, title: "Імідж підприємства: складові та специфіка їх використання", type: "Стаття", year: 2017, source: "Науковий журнал «Соціально-економічний розвиток регіонів в контексті міжнародної інтеграції»", coauthors: "Ю.М. Тер-Карапетянц" },
+            { id: 2, title: "Управління діловою активністю підприємств в сучасних умовах господарювання", type: "Стаття", year: 2017, source: "Вісник СНУ ім. В. Даля", coauthors: "О.Г. Зима, О.В. Птащенко" },
+            { id: 3, title: "Influence of external and internal debt on financial and economic security of ukraine", type: "Тези", year: 2017, source: "Матеріали інтернет-конференції, КНУТД", coauthors: "О.В. Птащенко, А.О. Станкова" },
+            { id: 4, title: "Використання маркетингових інструментів для забезпечення позиціонування високотехнологічної продукції на міжнародному ринку", type: "Тези", year: 2018, source: "Збірник статей за мат. конф., КНУТД", coauthors: "О.В. Птащенко, А.О. Станкова" },
+            { id: 5, title: "Теоретичні засади становлення міжнародного маркетингу високих технологій: євроінтеграційні процеси та міжнародне співробітництво", type: "Стаття", year: 2018, source: "Науковий журнал «Соціально-економічний розвиток регіонів...»", coauthors: "О.В. Птащенко, Д.Є. Архипова, К.Ю. Гончарова" },
+            { id: 6, title: "Сучасні підходи до управління підприємством", type: "Тези", year: 2018, source: "11th International Conference... TNEU", coauthors: "—" },
+            { id: 7, title: "Українські інформаційні мережеві технології в освіті", type: "Тези", year: 2018, source: "Матеріали Всеукраїнської конф., ХНЕУ ім. С. Кузнеця", coauthors: "—" },
+            { id: 8, title: "Аналіз співробітників компанії як носіїв корпоративної культури", type: "Стаття", year: 2018, source: "Вісник КНУТД", coauthors: "О.М. Афанасьєва" },
+            { id: 9, title: "Фактори впливу на ринкову вартість людського капіталу", type: "Стаття", year: 2018, source: "Вісник СНУ ім. В. Даля", coauthors: "О.Г. Зима, О.М. Афанасьєва" },
+            { id: 10, title: "Використання методів та інструментів інтернет-маркетингу підприємствами в умовах глобалізації", type: "Тези", year: 2018, source: "Матеріали всеукр. конф., СНУ ім. В. Даля", coauthors: "С.О. Родіонов" },
+            { id: 11, title: "Особливості формування національного людського капіталу україни в умовах інформаційно-технологічної революції", type: "Тези", year: 2018, source: "Матеріали конф. «Майбутній науковець – 2018»", coauthors: "—" },
+            { id: 12, title: "Країни-учасники світового ринку високих технологій", type: "Тези", year: 2018, source: "Матеріали інтернет-конференції, КНУТД", coauthors: "О.В. Птащенко" },
+            { id: 13, title: "Сучасні методи оцінки людського капіталу національної економіки", type: "Тези", year: 2019, source: "Збірник тез доповідей, ПДТУ", coauthors: "—" },
+            { id: 14, title: "Інноваційні бізнес-ідеї в системі управління підприємства в умовах глобалізації", type: "Стаття", year: 2019, source: "Чернігівський науковий часопис", coauthors: "О.Г. Зима, О.В. Птащенко, В.В." },
+            { id: 15, title: "Принципи використання сучасних інформаційно-комунікаційних технологій у навчальних закладах", type: "Стаття", year: 2019, source: "Чернігівський науковий часопис", coauthors: "О.М. Афанасьєва, Г.А. Гаража" },
+            { id: 16, title: "Бюджетна програма як основа програмно-цільового планування в сучасних умовах глобалізації", type: "Стаття", year: 2018, source: "Вісник КНУТД", coauthors: "О.В. Птащенко, І.О. Шевченко, Я.М. Кущ" },
+            { id: 17, title: "Інноваційні процеси економічного та соціально-культурного розвитку: вітчизняний та зарубіжний досвід", type: "Тези", year: 2019, source: "Тези доповідей ХІІ Міжнар. конф., ТНЕУ", coauthors: "—" },
+            { id: 18, title: "The world economy and international economic relations: the development and maintenance of economic safety", type: "Тези", year: 2019, source: "IIІ Int. Scientific Conference, Georgia", coauthors: "О.В. Птащенко, І.О. Шевченко" },
+            { id: 19, title: "Україна у світових глобалізаційних процесах: культура, економіка, суспільство", type: "Тези", year: 2019, source: "Тези доповідей Міжнар. конф., КНУКіМ", coauthors: "О.В. Птащенко" },
+            { id: 20, title: "Інноваційний аутсорсинг в малому і середньому бізнесі", type: "Тези", year: 2019, source: "Тези доповідей Міжнар. конф., КНУКіМ", coauthors: "О.І. Гарафонова, О.М. Олійник" },
+            { id: 21, title: "Правда і інформаційн в інформаційному суспільстві", type: "Тези", year: 2019, source: "Тези доповідей, Studia Methodologica", coauthors: "—" },
+            { id: 22, title: "Innovations as method of organization of small business", type: "Тези", year: 2019, source: "12th Int. Conference... TNEU", coauthors: "—" },
+            { id: 23, title: "Фінансова інклюзія як частина клієнтоорієнтованого маркетингу банку", type: "Тези", year: 2019, source: "Матеріали Всеукр. інтернет-конференції", coauthors: "Л.І. Телишевська, О.В. Птащенко" },
+            { id: 24, title: "Особливості маркетингу освітніх послуг", type: "Тези", year: 2019, source: "Матеріали ІІІ Всеукр. конф., м. Сєвєродонецьк", coauthors: "К.А. Заславська" },
+            { id: 25, title: "Людський капітал підприємства і стратегія його розвитку", type: "Тези", year: 2019, source: "Матеріали ІІІ Всеукр. конф., м. Сєвєродонецьк", coauthors: "В.Г. Щербак" },
+            { id: 26, title: "Сприйняття індивідуального продукту поколінням мілленіалов", type: "Стаття", year: 2020, source: "Вісник СНУ ім. В. Даля", coauthors: "К.Г. Наумік-Гладка, І.В. Литовченко" }
+        ];
+
+        // Format string to Sentence Case (First letter uppercase, rest lowercase)
+        function toSentenceCase(str) {
+            if (!str) return str;
+            let lower = str.toLowerCase();
+            return lower.charAt(0).toUpperCase() + lower.slice(1);
+        }
+
+        // Apply formatting mapping
+        const formattedPapers = rawPapers.map(p => ({
+            ...p,
+            title: toSentenceCase(p.title)
+        }));
+
+        let currentData = [...formattedPapers];
+        const tbody = document.getElementById('table-body');
+        const buttons = {
+            yearDesc: document.getElementById('btn-yearDesc'),
+            yearAsc: document.getElementById('btn-yearAsc'),
+            alphaAsc: document.getElementById('btn-alphaAsc')
+        };
+
+        // Render table rows
+        function renderTable(data) {
+            tbody.innerHTML = '';
+            data.forEach((paper, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50/80 dark:hover:bg-slate-800/80 transition-colors text-sm';
+                
+                // Color badges for type
+                const typeColor = paper.type === 'Стаття' 
+                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800' 
+                    : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800';
+
+                tr.innerHTML = `
+                    <td class="p-4 text-center text-slate-400 font-medium">${index + 1}</td>
+                    <td class="p-4 font-medium text-slate-900 dark:text-slate-200 leading-snug">${paper.title}</td>
+                    <td class="p-4 text-center">
+                        <span class="px-2.5 py-1 text-xs font-semibold rounded-md ${typeColor}">${paper.type}</span>
+                    </td>
+                    <td class="p-4 text-center font-semibold text-slate-700 dark:text-slate-300">${paper.year}</td>
+                    <td class="p-4 text-slate-600 dark:text-slate-400 italic text-xs">${paper.coauthors}</td>
+                    <td class="p-4 text-slate-500 dark:text-slate-400 text-xs">${paper.source}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Sorting Logic
+        window.sortData = function(type) {
+            // Update Active Button styling
+            Object.values(buttons).forEach(btn => btn.classList.remove('active'));
+            buttons[type].classList.add('active');
+
+            if (type === 'yearDesc') {
+                currentData.sort((a, b) => b.year - a.year);
+            } else if (type === 'yearAsc') {
+                currentData.sort((a, b) => a.year - b.year);
+            } else if (type === 'alphaAsc') {
+                // Ukrainian locale sorting
+                currentData.sort((a, b) => a.title.localeCompare(b.title, 'uk'));
+            }
+            renderTable(currentData);
+        };
+
+        // Initialize table on page load with default sort (Newest first)
+        sortData('yearDesc');
+    </script>
+</body>
+</html>
